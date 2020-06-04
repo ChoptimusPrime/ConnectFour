@@ -71,14 +71,14 @@ function findSpotForCol(x) {
   for (let i = 0; i < HEIGHT; i++) {
     columnArray.push(board[i][x]);
   }
-  let availableIndex = columnArray.findIndex( cell => cell !== null);
-  if (availableIndex === -1) {
+  let lastUsedIndex = columnArray.findIndex( cell => cell !== null);
+  if (lastUsedIndex === -1) {
     return HEIGHT - 1;
   }
-  if (availableIndex === 0) {
+  if (lastUsedIndex === 0) {
     return null;
   }
-  return availableIndex - 1;
+  return lastUsedIndex - 1;
   
 }
 
@@ -127,7 +127,7 @@ function handleClick(evt) {
   // TODO: check if all cells in board are filled; if so call, call endGame
   
   if((board.find(arr => arr.find(cell => cell === null) !== undefined)) === undefined) {
-    endGame("TIE")
+    endGame("TIE GAME")
   }
   
 
